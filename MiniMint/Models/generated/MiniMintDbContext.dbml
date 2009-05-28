@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="dtbanking" ContextNamespace="MiniMint.Data" Class="MiniMintDbContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=DTBanking;User ID=dtbanking" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MiniMintConnection" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.accounts" Member="accounts">
+    <Type Name="account">
+      <Column Name="account_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="account_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="account_dailyregister" Member="dailyregisters" ThisKey="account_id" OtherKey="registry_account" Type="dailyregister" />
+    </Type>
+  </Table>
+  <Table Name="dbo.dailyregister" Member="dailyregisters">
+    <Type Name="dailyregister">
+      <Column Name="registry_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="registry_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="registry_amount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="registry_enteredby" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="registry_account" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="register_category_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="account_dailyregister" Member="account" ThisKey="registry_account" OtherKey="account_id" Type="account" IsForeignKey="true" />
+      <Association Name="registercategory_dailyregister" Member="registercategory" ThisKey="register_category_id" OtherKey="register_category_id" Type="registercategory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.registercategories" Member="registercategories">
+    <Type Name="registercategory">
+      <Column Name="register_category_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="register_category_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="registercategory_dailyregister" Member="dailyregisters" ThisKey="register_category_id" OtherKey="register_category_id" Type="dailyregister" />
+    </Type>
+  </Table>
+  <Table Name="dbo.accountsummary" Member="accountsummaries">
+    <Type Name="accountsummary">
+      <Column Name="account_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrentTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

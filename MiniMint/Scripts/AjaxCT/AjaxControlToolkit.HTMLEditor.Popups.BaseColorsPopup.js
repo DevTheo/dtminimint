@@ -1,0 +1,2 @@
+﻿Type.registerNamespace("AjaxControlToolkit.HTMLEditor.Popups");AjaxControlToolkit.HTMLEditor.Popups.BaseColorsPopup=function(a){AjaxControlToolkit.HTMLEditor.Popups.BaseColorsPopup.initializeBase(this,[a])};AjaxControlToolkit.HTMLEditor.Popups.BaseColorsPopup.prototype={};AjaxControlToolkit.HTMLEditor.Popups.BaseColorsPopup.registerClass("AjaxControlToolkit.HTMLEditor.Popups.BaseColorsPopup",AjaxControlToolkit.HTMLEditor.Popups.AttachedTemplatePopup);
+if(typeof(Sys)!=='undefined')Sys.Application.notifyScriptLoaded();

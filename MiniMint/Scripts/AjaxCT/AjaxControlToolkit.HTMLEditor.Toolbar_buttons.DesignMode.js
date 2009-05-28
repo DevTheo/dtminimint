@@ -1,0 +1,2 @@
+﻿Type.registerNamespace("AjaxControlToolkit.HTMLEditor.ToolbarButton");AjaxControlToolkit.HTMLEditor.ToolbarButton.DesignMode=function(a){AjaxControlToolkit.HTMLEditor.ToolbarButton.DesignMode.initializeBase(this,[a])};AjaxControlToolkit.HTMLEditor.ToolbarButton.DesignMode.prototype={};AjaxControlToolkit.HTMLEditor.ToolbarButton.DesignMode.registerClass("AjaxControlToolkit.HTMLEditor.ToolbarButton.DesignMode",AjaxControlToolkit.HTMLEditor.ToolbarButton.ModeButton);
+if(typeof(Sys)!=='undefined')Sys.Application.notifyScriptLoaded();

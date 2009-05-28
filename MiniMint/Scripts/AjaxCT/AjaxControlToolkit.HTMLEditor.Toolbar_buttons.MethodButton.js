@@ -1,0 +1,2 @@
+﻿Type.registerNamespace("AjaxControlToolkit.HTMLEditor.ToolbarButton");AjaxControlToolkit.HTMLEditor.ToolbarButton.MethodButton=function(a){AjaxControlToolkit.HTMLEditor.ToolbarButton.MethodButton.initializeBase(this,[a])};AjaxControlToolkit.HTMLEditor.ToolbarButton.MethodButton.prototype={};AjaxControlToolkit.HTMLEditor.ToolbarButton.MethodButton.registerClass("AjaxControlToolkit.HTMLEditor.ToolbarButton.MethodButton",AjaxControlToolkit.HTMLEditor.ToolbarButton.DesignModeImageButton);
+if(typeof(Sys)!=='undefined')Sys.Application.notifyScriptLoaded();

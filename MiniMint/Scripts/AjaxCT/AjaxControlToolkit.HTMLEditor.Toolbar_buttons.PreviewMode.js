@@ -1,0 +1,2 @@
+﻿Type.registerNamespace("AjaxControlToolkit.HTMLEditor.ToolbarButton");AjaxControlToolkit.HTMLEditor.ToolbarButton.PreviewMode=function(a){AjaxControlToolkit.HTMLEditor.ToolbarButton.PreviewMode.initializeBase(this,[a])};AjaxControlToolkit.HTMLEditor.ToolbarButton.PreviewMode.prototype={};AjaxControlToolkit.HTMLEditor.ToolbarButton.PreviewMode.registerClass("AjaxControlToolkit.HTMLEditor.ToolbarButton.PreviewMode",AjaxControlToolkit.HTMLEditor.ToolbarButton.ModeButton);
+if(typeof(Sys)!=='undefined')Sys.Application.notifyScriptLoaded();

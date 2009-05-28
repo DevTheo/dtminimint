@@ -1,0 +1,11 @@
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\bin\MiniMint.dll
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\bin\MiniMint.pdb
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\bin\SubSonic.Core.dll
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\bin\SubSonic.Core.pdb
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\obj\Debug\MiniMint.dll
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\obj\Debug\MiniMint.pdb
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\bin\MvcContrib.dll
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\bin\MvcContrib.FluentHtml.dll
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\bin\MvcContrib.FluentHtml.pdb
+C:\Users\Jay\Documents\Visual Studio 2008\Projects\MiniMint\MiniMint\bin\MvcContrib.FluentHtml.xml
