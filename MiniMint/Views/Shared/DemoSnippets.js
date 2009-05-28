@@ -175,8 +175,9 @@ function WeAreNotBusy() {
 
 // The following goes on about line 32
 // Plugin fun
+
 $("#AccountTableActual").create(AjaxControlToolkit.DropShadowBehavior,
-                                { Opacity: 0.5,
+                                { Opacity: 0.3,
                                     Rounded: true,
                                     TrackPosition: true,
                                     Width: 5
