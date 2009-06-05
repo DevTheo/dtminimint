@@ -14,7 +14,7 @@
         <elementListCompartment Id="d7b2b669-0853-4596-b990-295ce4c094ed" absoluteBounds="6.265, 4.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.8125 : 2.94399251302083); (6.8125 : 3.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.8125 : 2.94399251302083); (6.8125 : 3.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MiniMintDbContext/account/account_dailyregister" />
       <nodes>
         <classShapeMoniker Id="672c9ff2-d116-4b3e-a45c-0777db4db784" />
@@ -27,7 +27,7 @@
         <elementListCompartment Id="baf326f9-0fb7-411e-b27c-90788f53f55d" absoluteBounds="2.765, 4.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.75 : 4.34699625651042); (6.25 : 4.34699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.75 : 4.34699625651042); (6.25 : 4.34699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MiniMintDbContext/registercategory/registercategory_dailyregister" />
       <nodes>
         <classShapeMoniker Id="2bc96546-b296-438f-8302-bc849b10dbf7" />

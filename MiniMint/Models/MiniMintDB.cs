@@ -35,7 +35,7 @@ namespace MiniMint.Models
                 Accounts = GetAccountSummary().ToList(),
                 Register = GetLast45DaysOfRegister().ToList(),
                 Categories = GetCategoriesListCollection(),
-                LastRetrieve = String.Format("{0:MM/dd/yyyy hh:mm:ss}", DateTime.Now)
+                LastRetrieve = String.Format("{0:MM/dd/yyyy hh:mm:ss}", DateTime.Now.AddSeconds(-1))
             };
         }
 
@@ -44,13 +44,14 @@ namespace MiniMint.Models
             var vm = new CheckRegistryViewModel
             {
                 Accounts = GetAccountSummary().ToList(),
-                Register = GetRegisterEntriesAfter(dtLastDataRetrieve).ToList()
+                Register = GetRegisterEntriesAfter(dtLastDataRetrieve).ToList(),
+                Categories = GetCategoriesListCollection()
             };
 
             // There are a number of improvements that could be made.. for instance we could just return the accounts
             // that changed
 
-            vm.LastRetrieve = String.Format("{0:MM/dd/yyyy hh:mm:ss}", DateTime.Now);
+            vm.LastRetrieve = String.Format("{0:MM/dd/yyyy hh:mm:ss}", DateTime.Now.AddSeconds(-1));
             return vm;
         }
         public IEnumerable<AccountSummary> GetAccountSummary()
@@ -120,7 +121,7 @@ namespace MiniMint.Models
         }
         public registercategory GetCategoryByName(string Category)
         {
-            return registercategories.Where(cat => cat.register_category_name.Equals(Category, StringComparison.InvariantCultureIgnoreCase)).Select(cat => cat).FirstOrDefault();
+            return registercategories.Where(cat => cat.register_category_name.ToLower() == Category.ToLower()).Select(cat => cat).FirstOrDefault();
         }
         public registercategory GetCategoryById(int id)
         {
@@ -160,6 +161,29 @@ namespace MiniMint.Models
                 dailyregisters.DeleteOnSubmit(entry);
                 SubmitChanges();
             }
+        }
+        public GraphsViewData GetGraphsData()
+        {
+            var FirstOfThisMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            var OneMonthAgo = DateTime.Today.AddMonths(-1);
+            
+            var lastMonthFirstDay = new DateTime(OneMonthAgo.Year, OneMonthAgo.Month, 1);
+            var lastMonthLastDay = new DateTime(OneMonthAgo.Year, OneMonthAgo.Month, FirstOfThisMonth.AddDays(-1).Day);
+
+            var lastQuarterFirstDay = lastMonthFirstDay.AddMonths(-3);
+
+            return new GraphsViewData
+            {
+                DataForAllTime = GetCategoryTotalsFor(null, null),
+                DataForLast3CompleteMonths = GetCategoryTotalsFor(lastQuarterFirstDay, lastMonthLastDay),
+                DataForLastMonth = GetCategoryTotalsFor(lastMonthFirstDay, lastMonthLastDay),
+                DataForThisMonth = GetCategoryTotalsFor(FirstOfThisMonth, null)
+            };
+        }
+        private List<CategoryGraphData> GetCategoryTotalsFor(DateTime? beginDate, DateTime? EndDate)
+        {
+            return (from item in this.usp_summarydata_by_category(beginDate, EndDate)
+                    select new CategoryGraphData { AmountForCategory = item.CategoryTotal??0, CategoryName = item.CategoryName }).ToList();
         }
     }
 }

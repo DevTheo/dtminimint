@@ -41,28 +41,41 @@ namespace MiniMint.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(FormCollection collection)
         {
+           
+            registercategory category = null;
+            dailyregister reg = null;
             try
             {
-
-                registercategory category = null;
+                
                 if (collection.AllKeys.Contains("RegisterCategoryId"))
                 {
                     var catID = collection.GetValue("RegisterCategoryId").AttemptedValue;
                     category = Dbcontext.GetCategoryById(Convert.ToInt32(catID));
                 }
-                else if (collection.AllKeys.Contains("RegisterCategoryName"))
-                {
-                    var categoryName = collection.GetValue("RegisterCategoryName").AttemptedValue;
-                    category = Dbcontext.GetCategoryByName(categoryName) ?? Dbcontext.CreateCategory(categoryName);
+                else
+                    if (collection.AllKeys.Contains("RegisterCategoryName"))
+                    {
+                        var categoryName = collection.GetValue("RegisterCategoryName").AttemptedValue;
+                        category = Dbcontext.GetCategoryByName(categoryName) ?? Dbcontext.CreateCategory(categoryName);
 
+                    }
+
+                DateTime EntryDate = DateTime.Now;
+                if (collection.AllKeys.Contains("EntryDate"))
+                {
+                    DateTime dt = EntryDate;
+                    if (DateTime.TryParse(collection.GetValue("EntryDate").AttemptedValue, out dt))
+                    {
+                        EntryDate =dt;
+                    }
                 }
 
                 // The entry will return, but we don't need it.. model context prepares to add it on submitchanges
-                Dbcontext.CreateRegisterEntry(
+                reg = Dbcontext.CreateRegisterEntry(
                                 Dbcontext.GetAccountById(Convert.ToInt32(collection.GetValue("AccountID").AttemptedValue)),
                                 category,
                                 Convert.ToDouble(collection.GetValue("Amount").AttemptedValue),
-                                DateTime.Now,
+                                EntryDate,
                                 collection.GetValue("Who").AttemptedValue);
                 Dbcontext.SubmitChanges();
 
@@ -74,9 +87,22 @@ namespace MiniMint.Controllers
                 }
                 else
                 {
+                    var dreg = new DailyRegistry
+                    {
+                        AccountId = reg.account.account_id,
+                        AccountName = reg.account.account_name,
+                        CategoryId = reg.register_category_id,
+                        CategoryName = reg.registercategory.register_category_name,
+                        EntryDate = reg.registry_date,
+                        RegistryAmount = reg.registry_amount,
+                        RegistryDesc = reg.registry_enteredby,
+                        RegistryId = reg.registry_id
+                    };
                     // Need to slightly alter our resultset
                     DateTime dtLastDataRetrieve = DateTime.Parse(collection.GetValue("LastRetrieveDate").AttemptedValue);
                     var newResult = Dbcontext.GetViewModelForEntriesAfterForJsonResult(dtLastDataRetrieve);
+                    if (!newResult.Register.Contains(dreg))
+                        newResult.Register.Add(dreg);
                     return Json(newResult);
                 }
             }

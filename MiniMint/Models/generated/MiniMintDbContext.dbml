@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Database Name="dtbanking" ContextNamespace="MiniMint.Data" Class="MiniMintDbContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+<Database Name="DTBanking" ContextNamespace="MiniMint.Data" Class="MiniMintDbContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=DTBanking;User ID=dtbanking" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MiniMintConnection" Provider="System.Data.SqlClient" />
   <Table Name="dbo.accounts" Member="accounts">
     <Type Name="account">
@@ -33,4 +33,12 @@
       <Column Name="CurrentTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
+  <Function Name="dbo.usp_summarydata_by_category" Method="usp_summarydata_by_category">
+    <Parameter Name="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="endDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="usp_summarydata_by_categoryResult">
+      <Column Name="CategoryName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

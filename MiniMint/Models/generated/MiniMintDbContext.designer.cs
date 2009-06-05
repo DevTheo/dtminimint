@@ -20,7 +20,7 @@ namespace MiniMint.Data
 	using System.Linq.Expressions;
 	
 	
-	[System.Data.Linq.Mapping.DatabaseAttribute(Name="dtbanking")]
+	[System.Data.Linq.Mapping.DatabaseAttribute(Name="DTBanking")]
 	public partial class MiniMintDbContext : System.Data.Linq.DataContext
 	{
 		
@@ -99,6 +99,13 @@ namespace MiniMint.Data
 			{
 				return this.GetTable<MiniMint.Models.generated.accountsummary>();
 			}
+		}
+		
+		[Function(Name="dbo.usp_summarydata_by_category")]
+		public ISingleResult<MiniMint.Models.generated.usp_summarydata_by_categoryResult> usp_summarydata_by_category([Parameter(DbType="DateTime")] System.Nullable<System.DateTime> startDate, [Parameter(DbType="DateTime")] System.Nullable<System.DateTime> endDate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), startDate, endDate);
+			return ((ISingleResult<MiniMint.Models.generated.usp_summarydata_by_categoryResult>)(result.ReturnValue));
 		}
 	}
 }
@@ -642,6 +649,50 @@ namespace MiniMint.Models.generated
 				if ((this._CurrentTotal != value))
 				{
 					this._CurrentTotal = value;
+				}
+			}
+		}
+	}
+	
+	public partial class usp_summarydata_by_categoryResult
+	{
+		
+		private string _CategoryName;
+		
+		private System.Nullable<double> _CategoryTotal;
+		
+		public usp_summarydata_by_categoryResult()
+		{
+		}
+		
+		[Column(Storage="_CategoryName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CategoryName
+		{
+			get
+			{
+				return this._CategoryName;
+			}
+			set
+			{
+				if ((this._CategoryName != value))
+				{
+					this._CategoryName = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_CategoryTotal", DbType="Float")]
+		public System.Nullable<double> CategoryTotal
+		{
+			get
+			{
+				return this._CategoryTotal;
+			}
+			set
+			{
+				if ((this._CategoryTotal != value))
+				{
+					this._CategoryTotal = value;
 				}
 			}
 		}

@@ -1,11 +1,12 @@
-﻿/*----------------------------------------------------------
+﻿
+/*----------------------------------------------------------
 The base color for this template is #5c87b2. If you'd like
 to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
 body
 {
-    background-color: #5c87b2;
+    background-color: #33CC33;
     font-size: .75em;
     font-family: Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -111,6 +112,7 @@ page width. Or, you can specify an exact pixel width. */
 
 #main
 {
+    top:10px;
     padding: 30px 30px 15px 30px;
     background-color: #fff;
     margin-bottom: 30px;
@@ -131,7 +133,7 @@ page width. Or, you can specify an exact pixel width. */
 ----------------------------------------------------------*/
 ul#menu
 {
-    border-bottom: 1px #5C87B2 solid;
+    border-bottom: 1px #33CC33 solid;
     padding: 0 0 2px;
     position: relative;
     margin: 0;
@@ -326,7 +328,7 @@ div#title
 {
     float:right;
     color: #e8eef4;
-    background-color: #034af3;
+    background-color: #33CC33;
 
 }
 .breakLayout 

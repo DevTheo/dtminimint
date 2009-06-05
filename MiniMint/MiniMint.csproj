@@ -62,8 +62,11 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\GraphsController.cs" />
+    <Compile Include="Controllers\JsCompress\JSCompress.cs" />
     <Compile Include="Controllers\MainAjaxedController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\FCController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -72,11 +75,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountSummary.cs" />
-    <Compile Include="Models\generated\MiniMintDbContext.designer.cs" />
+    <Compile Include="Models\generated\MiniMintDbContext.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MiniMintDbContext.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\MiniMintDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CheckRegistryViewModel.cs" />
     <Compile Include="ViewModels\DailyRegistry.cs" />
+    <Compile Include="ViewModels\GraphsViewData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
@@ -374,15 +382,29 @@
     <Content Include="Scripts\AjaxCT\AjaxControlToolkit.ValidatorCallout.close.gif" />
     <Content Include="Scripts\AjaxCT\AjaxControlToolkit.ValidatorCallout.ValidatorCallout.css" />
     <Content Include="Scripts\AjaxCT\AjaxControlToolkit.ValidatorCallout.ValidatorCalloutBehavior.js" />
+    <Content Include="Scripts\MainAjaxed-Plugins.js" />
     <Content Include="Scripts\jquery-1.3.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.3.2.min.js" />
+    <Content Include="Scripts\JqueryPlugin\date_input.css" />
     <Content Include="Scripts\JqueryPlugin\fgCharting.jQuery.js" />
+    <Content Include="Scripts\JqueryPlugin\jquery.autocomplete.css" />
+    <Content Include="Scripts\JqueryPlugin\jquery.autocomplete.js" />
+    <Content Include="Scripts\JqueryPlugin\jquery.autocomplete.min.js" />
+    <Content Include="Scripts\JqueryPlugin\jquery.autocomplete.pack.js" />
+    <Content Include="Scripts\JqueryPlugin\jquery.blockUI.js" />
+    <Content Include="Scripts\JqueryPlugin\jquery.date_input.js" />
+    <Content Include="Scripts\JqueryPlugin\jquery.date_input.min.js" />
+    <Content Include="Scripts\JqueryPlugin\jquery.date_input.pack.js" />
+    <Content Include="Scripts\JqueryPlugin\jquery.format.1.01.js" />
     <Content Include="Scripts\JqueryPlugin\jquery.MicrosoftAjax.js" />
+    <Content Include="Scripts\_Demo2-Ajax.js" />
+    <Content Include="Scripts\MainAjaxed-ACTPlugins.js" />
     <Content Include="Scripts\MainAjaxed.js" />
     <Content Include="Scripts\MicrosoftAjaxTimer.debug.js" />
     <Content Include="Scripts\MicrosoftAjaxWebForms.debug.js" />
+    <Content Include="Scripts\_Demo1-Simple Ajax.js" />
+    <Content Include="Views\Graphs\Index.aspx" />
     <Content Include="Views\MainAjaxed\Main.aspx" />
-    <Content Include="Views\Shared\DemoSnippets.js" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -399,6 +421,7 @@
     <None Include="Models\generated\MiniMintDbContext.dbml.layout">
       <DependentUpon>MiniMintDbContext.dbml</DependentUpon>
     </None>
+    <None Include="Scripts\JqueryPlugin\jQuery BlockUI Plugin %28v2%29.mht" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
